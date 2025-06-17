@@ -36,18 +36,23 @@ produtsController.getAllProduct = async (req, res) => {
 
 produtsController.updateProductStock = async (req, res) => {
   const { id } = req.params;
+  const { quantity } = req.body;
   try {
-    await ProductModel.updateOne({ _id: id }, { $set: { ...req.body } });
-    const allProduct = await ProductModel.find();
-    //primero que me lea todo el archivo (✅)
-    // se resta la cantidad cuando se da click al 'comprar'
-    //let quantity = 10;
-    // await ProductModel.updateOne({ _id: id }, {$set: {...stock: --quantity}})
-    // que pasa si la cantidad de producto no es suficiente?
-    // if (quantity > stock) res.(404).send({ message: "No hay suficiente stock" + error });
-    res.status(200).send(allProduct);
+    const product = await ProductModel.findById(id);
+
+    if (!product) {
+      return res.status(404).send({ message: "Product no found" });
+    }
+
+    if (product.stock < quantity) {
+      return res.status(400).send({ message: "Not enough stock" });
+    }
+
+    await ProductModel.updateOne({ _id: id }, { $inc: { stock: -quantity } });
+
+    res.status(200).send({ message: "Purchase completed successfully" });
   } catch (error) {
-    res.status(404).send({ message: "Error uptdating user" + error });
+    res.status(404).send({ message: "Error uptdating" + error });
   }
 };
 
