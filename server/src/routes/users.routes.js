@@ -1,12 +1,9 @@
 const express = require("express");
-const UserModel = require("../models/user.model");
-const usersController = require("../controllers/users.controller");
-const userRoutes = express.Router();
+const ProductModel = require("../models/product.model");
+const produtsController = require("../controllers/products.controller");
+const productRoutes = express.Router();
 
-userRoutes.get("/", usersController.getAllUsers);
-userRoutes.get("/id", usersController.getUserById);
-userRoutes.post("/", usersController.createUser);
-userRoutes.patch("/id", usersController.updateUser);
-userRoutes.delete("/id", usersController.deleteUser);
+productRoutes.get("/", produtsController.getAllProduct);
+productRoutes.patch("/bulk-stock", produtsController.updateProductStock);
 
-module.exports = userRoutes;
+module.exports = productRoutes;
