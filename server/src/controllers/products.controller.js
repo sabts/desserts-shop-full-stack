@@ -6,6 +6,7 @@ produtsController.getAllProduct = async (req, res) => {
     const allProduct = await ProductModel.find();
     res.send(allProduct);
   } catch (error) {
+    console.error("Error in getAllProduct:", error);
     res.status(500).send("Error getting user", error);
   }
 };
