@@ -1,5 +1,11 @@
+import ShoppingCartSite from './components/shopping-cart-site/ShoppingCartSite';
+
 const App = () => {
-  return <h1>React</h1>;
+	return (
+		<>
+			<ShoppingCartSite />
+		</>
+	);
 };
 
 export default App;

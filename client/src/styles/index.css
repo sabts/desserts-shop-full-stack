@@ -1,3 +1,5 @@
+:root{
+  --selected-product-color: #C73B0F;}
 *,
 *::after,
 *::before {
@@ -27,4 +29,10 @@ nav ul {
 body {
   margin: 0;
   font-family: sans-serif;
+  background: #FCF8F6;
+}
+@media screen and (width>768px){
+  body{
+      padding: 40px;
+  }
 }

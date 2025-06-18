@@ -37,8 +37,10 @@ produtsController.getAllProduct = async (req, res) => {
 produtsController.updateProductStock = async (req, res) => {
   const { id } = req.params;
   const { quantity } = req.body;
+
   try {
-    const product = await ProductModel.findById(id);
+    const product = await ProductModel.find();
+    await ProductModel.updateMany({ _id: id }, { $inc: { stock: -quantity } });
 
     if (!product) {
       return res.status(404).send({ message: "Product no found" });
@@ -48,23 +50,21 @@ produtsController.updateProductStock = async (req, res) => {
       return res.status(400).send({ message: "Not enough stock" });
     }
 
-    await ProductModel.updateOne({ _id: id }, { $inc: { stock: -quantity } });
-
     res.status(200).send({ message: "Purchase completed successfully" });
   } catch (error) {
     res.status(404).send({ message: "Error uptdating" + error });
   }
 };
 
-produtsController.deleteUser = async (req, res) => {
-  const { id } = req.params;
-  try {
-    await ProductModel.deleteOne({ _id: id });
-    const allUser = await ProductModel.find();
-    res.status(200).send(allUser);
-  } catch (error) {
-    res.status(500).send({ message: "Error deleting user" + error });
-  }
-};
+// produtsController.deleteUser = async (req, res) => {
+//   const { id } = req.params;
+//   try {
+//     await ProductModel.deleteOne({ _id: id });
+//     const allUser = await ProductModel.find();
+//     res.status(200).send(allUser);
+//   } catch (error) {
+//     res.status(500).send({ message: "Error deleting user" + error });
+//   }
+// };
 
 module.exports = produtsController;
