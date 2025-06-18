@@ -1,8 +1,7 @@
-import { PRODUCTS } from '../../constants/products';
 import { FILTERS } from '../../constants/filters';
 import ProductCard from '../product-card/ProductCard';
 import styles from './shoppingcartsite.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Cart from '../cart/Cart';
 import Header from '../header/Header';
 import { showProductInWeb } from '../../lib/utils/api';
@@ -10,9 +9,13 @@ import { showProductInWeb } from '../../lib/utils/api';
 const ShoppingCartSite = () => {
 	const [filter, setFilter] = useState(FILTERS.default);
 	const [cart, setCart] = useState([]);
+	const [products, setProducts] = useState([]);
 
-	const filteredProducts = getFilteredProducts(PRODUCTS, filter);
+	const filteredProducts = getFilteredProducts(products, filter);
 
+	useEffect(() => {
+		getProducts(setProducts);
+	  }, []); 
 	return (
 		<>
 			<Header />
@@ -66,7 +69,7 @@ const ShoppingCartSite = () => {
 					</article>
 				</section>
 				<Cart
-					product={PRODUCTS}
+					product={products}
 					cart={cart}
 					deteleItem={product => removeProductInCart(product, cart, setCart)}
 				/>
@@ -75,9 +78,9 @@ const ShoppingCartSite = () => {
 	);
 };
 
-const loadProductItems = async () => {
+const getProducts = async (setProduct) => {
 	const data = await showProductInWeb();
-	setMessages(data);
+	setProduct(data);
 };
 
 const getFilteredProducts = (products, filter) => {
