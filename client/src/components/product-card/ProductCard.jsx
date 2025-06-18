@@ -14,6 +14,8 @@ const ProductCard = ({
 
   return (
     <article className={styles["product-card"]} id={product.id}>
+
+      <div className={styles["product-stock"]}>{product.stock}</div>
       {/* Imagen del producto */}
       <div className={productSelected}>
         <picture>

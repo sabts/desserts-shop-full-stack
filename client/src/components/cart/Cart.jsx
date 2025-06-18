@@ -48,6 +48,7 @@ const Cart = ({
           <span className={styles["total-text"]}>Order Total:</span>
           <span className={styles["total-price"]}>${totalAmount}</span>
         </div>
+        <button>Confirm Order</button>
           </div>
 
       )}

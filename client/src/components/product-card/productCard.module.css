@@ -71,3 +71,14 @@
     color: var(--selected-product-color);
     font-weight: 600;
 }
+
+.product-stock{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--selected-product-color) ;
+    color: white;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
