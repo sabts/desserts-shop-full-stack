@@ -16,3 +16,24 @@ export const showProductInWeb = async () => {
 		throw new Error(error);
 	}
 };
+
+export const updateProductsStock = async (cart, setProducts) => {
+	try {
+		const response = await fetch(
+			'http://localhost:3000/api/products/bulk-stock',
+			{
+				method: 'PATCH',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(cart)
+			}
+		);
+		const data = await response.json();
+
+		if (!response.ok) {
+			console.error('Error al actualizar el Stock:', data.error);
+			return;
+		}
+	} catch (error) {
+		console.error('error al comunicar con el backed');
+	}
+};

@@ -1,10 +1,15 @@
+import { useState } from "react";
 import styles from "./cart.module.css"
+import Modal from "../modal/Modal";
+import CartResume from "../cart-resume/CartResume";
+import { updateProductsStock } from "../lib/utils/api"; // probar de nuevo en la funcion
 
 const Cart = ({
   product,
   cart,
   deteleItem
 }) => {
+  const [modalContent,setModalContent]= useState();
   const cartIsEmpty = cart.length === 0;
   const totalAmount = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   
@@ -48,13 +53,19 @@ const Cart = ({
           <span className={styles["total-text"]}>Order Total:</span>
           <span className={styles["total-price"]}>${totalAmount}</span>
         </div>
-        <button>Confirm Order</button>
+        <button onClick={()=> setModalContent(<Modal><CartResume cart={cart} totalAmount={totalAmount}
+         confirm={confirmOrder}/></Modal>)}>Confirm Order</button>
           </div>
 
       )}
-        {/*precio total*/}
-
     </section>
   );
 };
+
+const confirmOrder = async (cart, setCart, setModalContent)  => {
+  await updateProductsStock(cart);
+  setCart([]);
+  setModalContent(null);
+};
+
 export default Cart;
