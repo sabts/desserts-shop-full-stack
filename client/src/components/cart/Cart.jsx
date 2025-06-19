@@ -54,7 +54,7 @@ const Cart = ({
           <span className={styles["total-price"]}>${totalAmount}</span>
         </div>
         <button onClick={()=> setModalContent(<Modal><CartResume cart={cart} totalAmount={totalAmount}
-         confirm={confirmOrder}/></Modal>)}>Confirm Order</button>
+        confirmOrder={confirmOrder}/></Modal>)}>Confirm Order</button>
           </div>
 
       )}
