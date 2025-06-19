@@ -1,7 +1,9 @@
-const Modal = ({ children }) => {
-    if (!children) return;
+import styles from './modal.module.css';
 
-    return <div>{children}</div>;
+const Modal = ({ children }) => {
+	if (!children) return;
+
+	return <div style={styles['modalPosition']}>{children}</div>;
 };
 
 export default Modal;
