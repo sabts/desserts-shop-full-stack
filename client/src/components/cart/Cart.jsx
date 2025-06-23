@@ -66,7 +66,9 @@ const Cart = ({ product, cart, deteleItem }) => {
 								<CartResume
 									cart={cart}
 									totalAmount={totalAmount}
-									confirmOrder={confirmOrder}
+									confirmOrder={() =>
+										confirmOrder(cart, setModalContent)
+									}
 								/>
 							)
 						}
@@ -85,5 +87,4 @@ const confirmOrder = async (cart, setCart, setModalContent) => {
 	setCart([]);
 	setModalContent(null);
 };
-
 export default Cart;

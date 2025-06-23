@@ -1,5 +1,5 @@
 const URL_BASE = 'http://localhost:3000';
-const URL_API = '/api/products';
+const URL_API = '/api/products/';
 
 export const showProductInWeb = async () => {
 	try {
@@ -19,14 +19,12 @@ export const showProductInWeb = async () => {
 
 export const updateProductsStock = async (cart, setProducts) => {
 	try {
-		const response = await fetch(
-			'http://localhost:3000/api/products/bulk-stock',
-			{
-				method: 'PATCH',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(cart)
-			}
-		);
+		const response = await fetch(URL_BASE + URL_API + 'bulk-stock', {
+			method: 'PATCH',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(cart)
+		});
+
 		const data = await response.json();
 
 		if (!response.ok) {
@@ -34,6 +32,6 @@ export const updateProductsStock = async (cart, setProducts) => {
 			return;
 		}
 	} catch (error) {
-		console.error('error al comunicar con el backed');
+		console.error('Error al comunicar con el backend:', error);
 	}
 };

@@ -102,7 +102,7 @@ const addProduct = (product, cart, setCart) => {
 
 	if (!existingProduct) {
 		setCart([...cart, { ...product, quantity: 1 }]);
-		console.log('Carrito después de agregar el producto:', cart);
+	//	console.log('Carrito después de agregar el producto:', cart);
 	}
 };
 
