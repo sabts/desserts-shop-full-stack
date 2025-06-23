@@ -1,7 +1,7 @@
-const produtsController = {};
+const productsController = {};
 const ProductModel = require("../models/product.model");
 
-produtsController.getAllProduct = async (req, res) => {
+productsController.getAllProduct = async (req, res) => {
   try {
     const allProduct = await ProductModel.find();
     res.send(allProduct);
@@ -11,7 +11,7 @@ produtsController.getAllProduct = async (req, res) => {
   }
 };
 
-produtsController.updateProductStock = async (req, res) => {
+productsController.updateProductStock = async (req, res) => {
   const cartItems = req.body;
   try {
     const updates = cartItems.map(product => ({
@@ -28,4 +28,4 @@ produtsController.updateProductStock = async (req, res) => {
     res.status(404).send({ message: "Error uptdating" + error });
   }
 };
-module.exports = produtsController;
+module.exports = productsController;

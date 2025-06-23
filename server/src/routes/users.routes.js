@@ -1,9 +1,9 @@
 const express = require("express");
 const ProductModel = require("../models/product.model");
-const produtsController = require("../controllers/products.controller");
+const productsController = require("../controllers/products.controller");
 const productRoutes = express.Router();
 
-productRoutes.get("/", produtsController.getAllProduct);
-productRoutes.patch("/bulk-stock", produtsController.updateProductStock);
+productRoutes.get("/", productsController.getAllProduct);
+productRoutes.patch("/bulk-stock", productsController.updateProductStock);
 
 module.exports = productRoutes;

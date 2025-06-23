@@ -90,7 +90,7 @@ const getFilteredProducts = (products, filter) => {
 	if (filter === FILTERS.price) {
 		return [...products].sort((a, b) => a.price - b.price);
 	}
-	return products; // Default
+	return products;
 };
 
 const confirmProductInCart = (product, cart) => {
