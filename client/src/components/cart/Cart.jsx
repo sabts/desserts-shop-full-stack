@@ -4,7 +4,7 @@ import Modal from '../modal/Modal';
 import CartResume from '../cart-resume/CartResume';
 import { updateProductsStock } from '../../lib/utils/api';
 
-const Cart = ({ product, cart, deteleItem }) => {
+const Cart = ({ cart, deteleItem }) => {
 	const [modalContent, setModalContent] = useState();
 	const cartIsEmpty = cart.length === 0;
 	const totalAmount = cart.reduce(
@@ -85,6 +85,5 @@ const Cart = ({ product, cart, deteleItem }) => {
 const confirmOrder = async (cart, setCart, setModalContent) => {
 	await updateProductsStock(cart);
 	setCart([]);
-	setModalContent(null);
 };
 export default Cart;

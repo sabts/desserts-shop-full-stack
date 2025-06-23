@@ -17,7 +17,7 @@ export const showProductInWeb = async () => {
 	}
 };
 
-export const updateProductsStock = async (cart, setProducts) => {
+export const updateProductsStock = async cart => {
 	try {
 		const response = await fetch(URL_BASE + URL_API + 'bulk-stock', {
 			method: 'PATCH',
