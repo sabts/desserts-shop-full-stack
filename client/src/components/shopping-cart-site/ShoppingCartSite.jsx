@@ -71,6 +71,7 @@ const ShoppingCartSite = () => {
 				<Cart
 					product={products}
 					cart={cart}
+					setCart={setCart} 
 					deteleItem={product => removeProductInCart(product, cart, setCart)}
 				/>
 			</main>

@@ -67,7 +67,7 @@ const Cart = ({ cart, setCart, deteleItem }) => {
 									cart={cart}
 									totalAmount={totalAmount}
 									confirmOrder={() =>
-										confirmOrder(cart, setCart, setModalContent)
+										confirmOrder(cart,setCart)
 									}
 								/>
 							)
@@ -83,7 +83,7 @@ const Cart = ({ cart, setCart, deteleItem }) => {
 };
 
 const confirmOrder = async (cart, setCart) => {
-	await updateProductsStock(cart);
-	setCart([]);
-};
+	await updateProductsStock(cart);  
+	setCart([]); 
+  };
 export default Cart;
