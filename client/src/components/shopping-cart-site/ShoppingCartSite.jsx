@@ -54,7 +54,7 @@ const ShoppingCartSite = () => {
 					<article className={styles['gallery']}>
 						{filteredProducts.map(product => (
 							<ProductCard
-								key={product.id}
+								key={product._id}
 								product={product}
 								cart={cart}
 								addToCart={() => addProduct(product, cart, setCart)}

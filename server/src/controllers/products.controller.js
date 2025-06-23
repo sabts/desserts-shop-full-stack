@@ -16,7 +16,7 @@ productsController.updateProductStock = async (req, res) => {
   try {
     const updates = cartItems.map(product => ({
       updateOne: {
-        filter: { _id: product.id },
+        filter: { _id: product._id },
         update: { $inc: { stock: -product.quantity } },
       },
     }));

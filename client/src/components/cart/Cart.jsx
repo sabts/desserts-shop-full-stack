@@ -29,7 +29,7 @@ const Cart = ({ cart, setCart, deteleItem }) => {
 			{!cartIsEmpty && (
 				<div>
 					{cart.map(item => (
-						<div className={styles['product-in-cart']} key={item.id}>
+						<div className={styles['product-in-cart']} key={item._id}>
 							<div className={styles['product-infoCart']}>
 								<span className={styles['productname']}>{item.title}</span>
 								<div>
